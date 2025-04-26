@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible Content</title>
+    <style>
+        /* Base Styles */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #f1f1f1;
+            margin: 10px 0;
+        }
+
+        /* When content is expanded */
+        .collapsible-content.expanded {
+            max-height: 500px; /* Adjust based on your content */
+            transition: max-height 0.5s ease-in;
+        }
+
+        /* Read More/Less Button */
+        .read-more-btn {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .read-more-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Your existing content with collapsible section -->
+<div class="content-container">
+    <p>This is your visible content. Click below to show/hide additional content.</p>
+    
+    <!-- Collapsible Content -->
+    <div class="collapsible-content" id="collapsibleContent">
+        <p>This is the hidden content that will be revealed when clicking "Read More".</p>
+        <p>You can put any HTML content here - paragraphs, lists, images, etc.</p>
+    </div>
+    
+    <!-- Your existing Read More button -->
+    <button class="read-more-btn" onclick="toggleCollapse()">Read More</button>
+</div>
+
+<script>
+    function toggleCollapse() {
+        const content = document.getElementById('collapsibleContent');
+        const button = document.querySelector('.read-more-btn');
+        
+        content.classList.toggle('expanded');
+        
+        if (content.classList.contains('expanded')) {
+            button.textContent = 'Read Less';
+        } else {
+            button.textContent = 'Read More';
+        }
+    }
+</script>
+
+</body>
+</html>
